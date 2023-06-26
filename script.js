@@ -8,6 +8,7 @@ const listBtn = document.getElementById("list-btn");
 const divBody = document.getElementById("div-body");
 const divPopup = document.getElementById("div-popup");
 const tableBody = document.getElementById("table-body");
+const errorLogin=document.getElementById("errorLogin");
 const tableHead = document.getElementById("table-head");
 const updateNameInput = document.getElementById("update-name-input");
 const updateEmailInput = document.getElementById("update-email-input");
@@ -69,6 +70,7 @@ function login(){
     tableHead.innerHTML = "";
   tableBody.innerHTML = "";
   //tableBody.innerHTML = "";
+  errorLogin.innerHTML = "";
 
   
     const divUser= document.createElement("div");
@@ -140,6 +142,8 @@ console.log('data es:');
 console.log(data);
 if(data!=null){
   console.log(dataRole);
+  document.getElementById("errorLogin").innerHTML="";
+
   if(dataRole=="Administrador"){
     
   updatePositionVehicle(dataId);
@@ -162,7 +166,7 @@ document.getElementById("errorLogin").innerHTML="";
 
    }
    else{
-   document.getElementById("errorLogin").innerHTML="Acceso denegado, comprueba tu usuario y contraseña";
+   //document.getElementById("errorLogin").innerHTML="Acceso denegado, comprueba tu usuario y contraseña";
      
 }
 
@@ -173,7 +177,7 @@ function renderTable() {
  // divBody.innerHTML = "";
   tableHead.innerHTML = "";
   tableBody.innerHTML = "";
-
+  errorLogin.innerHTML = "";
 //  if(sessionStorage.getItem('sessionRole')=="Administrador"){
   const trAddUser = document.createElement("tr");
   const tdAddUser= document.createElement("td");
@@ -645,6 +649,7 @@ var dataSessionRole=sessionStorage.getItem('sessionRole');
 
 if(dataSession!= null){
   
+
   if(dataSessionRole=="Administrador"){
   renderTable();
 }
